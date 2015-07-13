@@ -16,3 +16,8 @@ async function init() {
   return data;
 };
 
+try {
+	let data = await init();
+} catch(e) {
+	// handle error
+}

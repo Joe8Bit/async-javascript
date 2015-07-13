@@ -31,3 +31,11 @@ function init(next) {
   });
 
 };
+
+init(function(err, data) {
+  if (err) {
+    // ... handle error
+  } else {
+    // ... handle success
+  }
+});

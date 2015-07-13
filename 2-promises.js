@@ -28,3 +28,11 @@ function init() {
   });
 
 };
+
+init()
+  .then(function() {
+    // ... handle success
+  })
+  .catch(function() {
+    // ... handle error
+  });
