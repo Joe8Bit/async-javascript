@@ -17,7 +17,7 @@ async function init() {
 };
 
 try {
-	let data = await init();
+  let data = await init();
 } catch(e) {
-	// handle error
+  // handle error
 }
