@@ -1,28 +1,13 @@
 'use strict';
 
+// Assume we have some getJSON method that handles HTTP, vaugley analogous to $.getJSON 
+
 function loadUser(next) {
-
-  window.fetch('user.json', { method: 'GET' })
-      .then(function(user) {
-        data.greeting = `Hi ${data.firstName}, Welcome to Foobar.com!`;
-        next(null, user);
-      })
-      .catch(function(err) {
-        next(err);
-      });
-
+  getJSON('user.json', next);
 }
 
 function loadStories(userId, next) {
-
-  window.fetch(userId + '/stories.json', { method: 'GET' })
-      .then(function(stories) {
-        next(null, stories);
-      })
-      .catch(function(err) {
-        next(err);
-      });
-
+  getJSON(userId + '/stories.json', next);
 }
 
 function init(next) {
@@ -33,6 +18,7 @@ function init(next) {
       next(err);
     } else {
       data.user = user;
+      data.user.greeting = `Hi ${data.firstName}, Welcome to Foobar.com!`;
       loadStories(data.user.id, function(err, stories) {
         if (err) {
           next(err);
