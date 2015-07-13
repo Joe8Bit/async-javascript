@@ -1,3 +1,5 @@
+'use strict';
+
 function loadUser() {
   return new Promise(function(resolve, reject) {
 
@@ -12,10 +14,12 @@ function loadUser() {
 }
 
 function loadStories(userId) {
-  return window.fetch(userId + '/stories.json', { method: 'GET' });
+  return new Promise(function(resolve, reject) {
+
+    window.fetch(userId + '/stories.json', { method: 'GET' })
 }
 
-module.exports = function() {
+function init() {
   var data = {};
 
   return new Promise(function(resolve, reject) {

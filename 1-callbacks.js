@@ -1,3 +1,5 @@
+'use strict';
+
 function loadUser(next) {
 
   window.fetch('user.json', { method: 'GET' })
@@ -23,7 +25,7 @@ function loadStories(userId, next) {
 
 }
 
-module.exports = function(next) {
+function init(next) {
   var data = {};
 
   loadUser(function(err, user) {
