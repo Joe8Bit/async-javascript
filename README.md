@@ -16,6 +16,6 @@ All of the code is pseudo-ES6 and pseduo-browser code, which is fine for our pur
 
 This flag enables experimental features that are at the second stage (stage 0 is first) of the spec approval process.
 
-## Y NO GENERATORS?
+## Y U NO GENERATORS?
 
 There's a conspicous lack of generators in this repo, and there's a good reason for that. The hoops you have to jump through in order to make generatoes work with async code are significant, and the resulting code is not easily grok'able. These problems are 'solved' with async/await.
