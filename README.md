@@ -10,11 +10,13 @@ The purpose is demonsrate the improvements that are being made in dealing with m
 
 ### Running
 
-All of the code is pseudo-ES6 and pseduo-browser code, which is fine for our purposes. However in order to run it you'll need to use the [Babel](http://babeljs.io/) transpiler. For the final `async/awaitz` example you'll have to use it in the following form:
+In order to run it you'll need to use the [Babel](http://babeljs.io/) transpiler (and Node). You can run the examples in the following way:
 
-    babel --stage 1 3-async-await.js
-
-This flag enables experimental features that are at the second stage (stage 0 is first) of the spec approval process.
+```
+babel-node 1-callbacks.js
+babel-node 2-promises.js
+babel-node --stage 1 3-async-await.js
+```
 
 ## Y U NO GENERATORS?
 

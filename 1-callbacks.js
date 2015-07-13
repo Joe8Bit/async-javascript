@@ -1,13 +1,13 @@
 'use strict';
 
-// Assume we have some getJSON method that handles HTTP, vaugley analogous to $.getJSON 
+var request = require('./request');
 
 function loadUser(next) {
-  getJSON('user.json', next);
+  request('user.json', next);
 }
 
 function loadStories(userId, next) {
-  getJSON(userId + '/stories.json', next);
+  request(userId + '/stories.json', next);
 }
 
 function init(next) {
@@ -18,7 +18,7 @@ function init(next) {
       next(err);
     } else {
       data.user = user;
-      data.user.greeting = `Hi ${data.firstName}, Welcome to Foobar.com!`;
+      data.user.greeting = `Hi ${data.user.firstName}, Welcome to Foobar.com!`;
       loadStories(data.user.id, function(err, stories) {
         if (err) {
           next(err);
@@ -32,10 +32,12 @@ function init(next) {
 
 };
 
-init(function(err, data) {
-  if (err) {
-    // ... handle error
-  } else {
-    // ... handle success
-  }
-});
+(function() {
+  init(function(err, data) {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log(data);
+    }
+  });
+}());

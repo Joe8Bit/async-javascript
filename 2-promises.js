@@ -1,11 +1,13 @@
 'use strict';
 
+var request = require('./request');
+
 function loadUser() {
-  return window.fetch('user.json', { method: 'GET' });
+  return request('user.json', { method: 'GET' });
 }
 
 function loadStories(userId) {
-  return window.fetch(userId + '/stories.json', { method: 'GET' });
+  return request(userId + '/stories.json', { method: 'GET' });
 }
 
 function init() {
@@ -16,7 +18,7 @@ function init() {
     loadUser()
       .then(function(user) {
         data.user = user;
-        data.user.greeting = `Hi ${data.firstName}, Welcome to Foobar.com!`;
+        data.user.greeting = `Hi ${data.user.firstName}, Welcome to Foobar.com!`;
         return loadStories(data.user.id);
       })
       .then(function(stories) {
@@ -29,10 +31,12 @@ function init() {
 
 };
 
-init()
-  .then(function() {
-    // ... handle success
-  })
-  .catch(function() {
-    // ... handle error
-  });
+(function() {
+  init()
+    .then(function(data) {
+      console.log('success', data);
+    })
+    .catch(function(err) {
+      console.log('err', err);
+    });
+}());
