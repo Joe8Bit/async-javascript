@@ -36,7 +36,7 @@ module.exports = function(next) {
           next(err);
         } else {
           data.stories = stories
-          next(data);
+          next(null, data);
         }
       });
     }
