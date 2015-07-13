@@ -1,22 +1,11 @@
 'use strict';
 
 function loadUser() {
-  return new Promise(function(resolve, reject) {
-
-    window.fetch('user.json', { method: 'GET' })
-      .then(function(data) {
-        data.greeting = `Hi ${data.firstName}, Welcome to Foobar.com!`;
-        resolve(data);
-      })
-      .catch(reject);
-
-  });
+  return window.fetch('user.json', { method: 'GET' });
 }
 
 function loadStories(userId) {
-  return new Promise(function(resolve, reject) {
-
-    window.fetch(userId + '/stories.json', { method: 'GET' })
+  return window.fetch(userId + '/stories.json', { method: 'GET' });
 }
 
 function init() {
@@ -27,6 +16,7 @@ function init() {
     loadUser()
       .then(function(user) {
         data.user = user;
+        data.user.greeting = `Hi ${data.firstName}, Welcome to Foobar.com!`;
         return loadStories(data.user.id);
       })
       .then(function(stories) {
