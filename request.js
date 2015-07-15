@@ -1,7 +1,7 @@
 'use strict';
 
-// This is a very simple (and fragile) mock used to test both callback and promise based
-// HTTP
+// This is a very simple (and fragile) mock used to test both callback and
+// promise based HTTP
 
 class Request {
 

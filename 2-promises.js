@@ -14,12 +14,12 @@ function init() {
   let data = {};
 
   return loadUser()
-      .then(function(user) {
+      .then((user) => {
         data.user = user;
         data.user.greeting = `Hi ${data.user.firstName}, Welcome to Foobar.com!`;
         return loadStories(data.user.id);
       })
-      .then(function(stories) {
+      .then((stories) => {
         data.stories = stories;
         return data;
       });
@@ -29,10 +29,10 @@ function init() {
 (() => {
 
   init()
-    .then(function(data) {
+    .then((data) => {
       console.log('success', data);
     })
-    .catch(function(err) {
+    .catch((err) => {
       console.log('err', err);
     });
 
