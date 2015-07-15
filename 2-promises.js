@@ -1,6 +1,6 @@
 'use strict';
 
-var request = require('./request');
+let request = require('./request');
 
 function loadUser() {
   return request('user.json', { method: 'GET' });
@@ -11,7 +11,7 @@ function loadStories(userId) {
 }
 
 function init() {
-  var data = {};
+  let data = {};
 
   return new Promise(function(resolve, reject) {
 

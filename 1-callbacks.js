@@ -1,6 +1,6 @@
 'use strict';
 
-var request = require('./request');
+let request = require('./request');
 
 function loadUser(next) {
   request('user.json', next);
@@ -11,7 +11,7 @@ function loadStories(userId, next) {
 }
 
 function init(next) {
-  var data = {};
+  let data = {};
 
   loadUser(function(err, user) {
     if (err) {

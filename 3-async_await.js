@@ -1,6 +1,6 @@
 'use strict';
 
-var request = require('./request');
+let request = require('./request');
 
 async function loadUser() {
   return await request('user.json', { method: 'GET' });
