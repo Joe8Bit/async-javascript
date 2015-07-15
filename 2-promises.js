@@ -13,9 +13,7 @@ function loadStories(userId) {
 function init() {
   let data = {};
 
-  return new Promise(function(resolve, reject) {
-
-    loadUser()
+  return loadUser()
       .then(function(user) {
         data.user = user;
         data.user.greeting = `Hi ${data.user.firstName}, Welcome to Foobar.com!`;
@@ -23,11 +21,8 @@ function init() {
       })
       .then(function(stories) {
         data.stories = stories;
-        resolve(data);
-      })
-      .catch(reject);
-
-  });
+        return data;
+      });
 
 };
 
