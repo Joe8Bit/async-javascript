@@ -3,11 +3,11 @@
 import request from './request';
 
 function loadUser() {
-  return request('user.json', { method: 'GET' });
+  return request.get('user.json');
 }
 
 function loadStories(userId) {
-  return request(userId + '/stories.json', { method: 'GET' });
+  return request.get(userId + '/stories.json');
 }
 
 function init() {

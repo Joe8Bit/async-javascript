@@ -3,11 +3,11 @@
 import request from './request';
 
 async function loadUser() {
-  return await request('user.json', { method: 'GET' });
+  return await request.get('user.json');
 }
 
 async function loadStories(userId) {
-  return await request(userId + '/stories.json', { method: 'GET' });
+  return await request.get(userId + '/stories.json');
 }
 
 async function init() {

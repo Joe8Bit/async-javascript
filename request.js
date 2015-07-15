@@ -3,32 +3,40 @@
 // This is a very simple (and fragile) mock used to test both callback and promise based
 // HTTP
 
-const MAP = {
-	'user.json': {
-		id: 2,
-		firstName: 'Steve'
-	},
-	'2/stories.json': [{
-		foo: 'bar'
-	}]
-};
+class Request {
 
-function callMeMaybe(url, next, isPromise) {
-	setTimeout(function() {
-		if (isPromise) {
-			next(MAP[url]);
+	map = {
+		'user.json': {
+			id: 2,
+			firstName: 'Steve'
+		},
+		'2/stories.json': [{
+			foo: 'bar'
+		}]
+	}
+
+	constructor() {}
+
+	callMeMaybe(url, next, isPromise = false) {
+		setTimeout(() => {
+			if (isPromise) {
+				next(this.map[url]);
+			} else {
+				next(null, this.map[url]);
+			}
+		}, 100);
+	}
+
+	get(url, next) {
+		if (next) {
+			this.callMeMaybe(url, next);
 		} else {
-			next(null, MAP[url]);
+			return new Promise((resolve, reject) => {
+				this.callMeMaybe(url, resolve, true)
+			});
 		}
-	}, 100);
+	}
+
 }
 
-module.exports = function(url, next) {
-	if (typeof next === 'function') {
-		callMeMaybe(url, next, false);
-	} else {
-		return new Promise(function(resolve, reject) {
-			callMeMaybe(url, resolve, true)
-		});
-	}
-};
+module.exports = new Request();

@@ -3,11 +3,11 @@
 import request from './request';
 
 function loadUser(next) {
-  request('user.json', next);
+  request.get('user.json', next);
 }
 
 function loadStories(userId, next) {
-  request(userId + '/stories.json', next);
+  request.get(userId + '/stories.json', next);
 }
 
 function init(next) {

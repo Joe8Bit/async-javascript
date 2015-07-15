@@ -13,9 +13,9 @@ The purpose is demonsrate the improvements that are being made in dealing with m
 In order to run it you'll need to use the [Babel](http://babeljs.io/) transpiler (and Node). You can run the examples in the following way:
 
 ```
-babel-node 1-callbacks.js
-babel-node 2-promises.js
-babel-node --stage 1 3-async-await.js
+babel-node --stage 0 1-callbacks.js
+babel-node --stage 0 2-promises.js
+babel-node --stage 0 3-async-await.js
 ```
 
 ## Y U NO GENERATORS?
