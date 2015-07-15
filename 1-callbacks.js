@@ -1,6 +1,6 @@
 'use strict';
 
-let request = require('./request');
+import request from './request';
 
 function loadUser(next) {
   request('user.json', next);
@@ -33,6 +33,7 @@ function init(next) {
 };
 
 (function() {
+
   init(function(err, data) {
     if (err) {
       console.log(err);
@@ -40,4 +41,5 @@ function init(next) {
       console.log(data);
     }
   });
+
 }());

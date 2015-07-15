@@ -1,6 +1,6 @@
 'use strict';
 
-let request = require('./request');
+import request from './request';
 
 async function loadUser() {
   return await request('user.json', { method: 'GET' });
@@ -19,10 +19,12 @@ async function init() {
 };
 
 (async function() {
+
   try {
     let data = await init();
     console.log('success', data);
   } catch(e) {
     console.log('error', e);
   }
+
 }());
