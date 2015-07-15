@@ -5,24 +5,23 @@
 
 class Request {
 
-	map = {
-		'user.json': {
-			id: 2,
-			firstName: 'Steve'
-		},
-		'2/stories.json': [{
-			foo: 'bar'
-		}]
-	}
+	map = new Map()
+				.set('user.json', {
+					id: 2,
+					firstName: 'Steve'
+				})
+				.set('2/stories.json', [{
+					foo: 'bar'
+				}])
 
 	constructor() {}
 
 	callMeMaybe(url, next, isPromise = false) {
 		setTimeout(() => {
 			if (isPromise) {
-				next(this.map[url]);
+				next(this.map.get(url));
 			} else {
-				next(null, this.map[url]);
+				next(null, this.map.get(url));
 			}
 		}, 100);
 	}
