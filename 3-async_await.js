@@ -18,7 +18,7 @@ async function init() {
   return data;
 };
 
-(async function() {
+(async () => {
 
   try {
     let data = await init();

@@ -13,13 +13,13 @@ function loadStories(userId, next) {
 function init(next) {
   let data = {};
 
-  loadUser(function(err, user) {
+  loadUser((err, user) => {
     if (err) {
       next(err);
     } else {
       data.user = user;
       data.user.greeting = `Hi ${data.user.firstName}, Welcome to Foobar.com!`;
-      loadStories(data.user.id, function(err, stories) {
+      loadStories(data.user.id, (err, stories) => {
         if (err) {
           next(err);
         } else {
@@ -32,9 +32,9 @@ function init(next) {
 
 };
 
-(function() {
+(() => {
 
-  init(function(err, data) {
+  init((err, data) => {
     if (err) {
       console.log(err);
     } else {

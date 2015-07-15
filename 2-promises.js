@@ -26,7 +26,7 @@ function init() {
 
 };
 
-(function() {
+(() => {
 
   init()
     .then(function(data) {
