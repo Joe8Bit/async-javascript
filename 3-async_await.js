@@ -2,19 +2,11 @@
 
 import request from './request';
 
-async function loadUser() {
-  return await request.get('user.json');
-}
-
-async function loadStories(userId) {
-  return await request.get(userId + '/stories.json');
-}
-
 async function init() {
   let data = {};
-  data.user = await loadUser();
+  data.user = await request.get('user.json');
   data.user.greeting = `Hi ${data.user.firstName}, Welcome to Foobar.com!`;
-  data.stories = await loadStories(data.user.id);
+  data.stories = await request.get(`${data.user.id}/stories.json`);
   return data;
 };
 
